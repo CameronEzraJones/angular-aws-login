@@ -24,6 +24,9 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# Environment variables
+/src/environments/
+
 # misc
 /.sass-cache
 /connect.lock

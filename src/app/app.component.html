@@ -1,3 +1,19 @@
-<h1>
-  {{title}}
-</h1>
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">{{title}}</li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><button *ngIf="userService.isUnauthenticated()" type="button" class="button" (click)="authFormMode = 'log in'" data-open="authForm">Login</button></li>
+      <li><button *ngIf="userService.isUnauthenticated()" type="button" class="button" (click)="authFormMode = 'sign up'" data-open="authForm">Sign Up</button></li>
+      <li><button *ngIf="userService.hasAuthState('authenticated')" type="button" class="button" (click)="userService.logout()">Log out</button></li>
+    </ul>
+  </div>
+</div>
+<div class="reveal" id="authForm" data-reveal data-options="closeOnClick:false;closeOnEsc:false;">
+  <app-auth-form *ngIf="userService.isUnauthenticated()" [mode]="authFormMode"></app-auth-form>
+  <app-auth-confirm-user *ngIf="userService.hasAuthState('registered') && !userService.hasAuthState('confirmed')"></app-auth-confirm-user>
+</div>
+<router-outlet></router-outlet>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserService } from './user-service/user-service.service';
+import { UserAuthState } from './user-service/user-auth-state.enum';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'Angular Kanban';
+  authFormMode = '';
+
+  constructor(private userService: UserService) {};
 }
