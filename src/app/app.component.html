@@ -13,7 +13,11 @@
   </div>
 </div>
 <div class="reveal" id="authForm" data-reveal data-options="closeOnClick:false;closeOnEsc:false;">
-  <app-auth-form *ngIf="userService.isUnauthenticated()" [mode]="authFormMode"></app-auth-form>
+  <app-sign-up-form *ngIf="authFormMode === 'sign up' && userService.isUnauthenticated()"></app-sign-up-form>
+  <app-log-in-form *ngIf="authFormMode === 'log in' && userService.isUnauthenticated()"></app-log-in-form>
   <app-auth-confirm-user *ngIf="userService.hasAuthState('registered') && !userService.hasAuthState('confirmed')"></app-auth-confirm-user>
+  <button class="close-button" data-close aria-label="Close modal" type="button" *ngIf="userService.isUnauthenticated()">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 <router-outlet></router-outlet>

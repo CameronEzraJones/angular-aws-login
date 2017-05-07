@@ -90,7 +90,7 @@ export class UserService {
   confirmSignup(confCode: string) {
     console.log('Confirming signup');
     return new Promise((resolve, reject) => {
-      this.cognitoUser.confirmRegistration(confCode, true, function(err, result) {
+      this.cognitoUser.confirmRegistration(confCode, true, (err, result) => {
         if (err) {
           reject(err);
         } else {

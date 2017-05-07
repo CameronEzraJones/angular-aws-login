@@ -1,0 +1,28 @@
+<h4>Log In</h4>
+<hr>
+<div class="callout alert" *ngIf="error">
+  {{error.message}}
+</div>
+<form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="small-12 columns">
+      <label for="authFormUsername" [class.is-invalid-label]="!username.valid && username.touched">Username</label>
+      <input id="authFormUsername" type="text" name="username"
+             [formControl]="logInForm.controls['username']" [class.is-invalid-input]="!username.value && username.touched" required />
+      <div class="form-error" [ngClass]="{'is-visible': !username.valid && username.touched}" *ngIf="username.errors">
+        <p *ngIf="username.errors.required">Username is required</p>
+      </div>
+    </div>
+    <div class="small-12 columns">
+      <label for="authFormPassword" [class.is-invalid-label]="!password.valid && password.touched">Password</label>
+      <input id="authFormPassword" type="password" name="password"
+             [formControl]="logInForm.controls['password']" [class.is-invalid-input]="!password.valid && password.touched" required />
+      <div class="form-error" [ngClass]="{'is-visible': !password.valid && password.touched}" *ngIf="password.errors">
+        <p *ngIf="password.errors.required">Password is required</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <button class="button" type="submit" value="Submit" [disabled]="!logInForm.valid">Log in</button>
+  </div>
+</form>

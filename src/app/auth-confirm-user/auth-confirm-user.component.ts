@@ -15,7 +15,7 @@ export class AuthConfirmUserComponent implements OnInit {
 
   constructor(private userService: UserService, fb: FormBuilder) {
     this.confirmForm = fb.group({
-      confCode: ['Enter confirmation code', Validators.required]
+      confCode: ['', Validators.required]
     });
 
     this.confCode = this.confirmForm.controls['confCode'];
